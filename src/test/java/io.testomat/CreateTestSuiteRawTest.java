@@ -1,12 +1,13 @@
 package io.testomat;
 
-import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.github.javafaker.Faker;
+import io.testomat.web.pages.LoginPage;
+import io.testomat.web.pages.ProjectsPage;
+import io.testomat.web.pages.TestSuitePage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.devtools.v116.systeminfo.model.Size;
 
 import java.time.Duration;
 
@@ -20,13 +21,36 @@ public class CreateTestSuiteRawTest {
 
     Faker faker = new Faker();
 
+    private final LoginPage loginPage = new LoginPage();
+
     @Test
     @DisplayName("Should be possible test suite for new project")
     void shouldBePossibleToCreateNewProject() {
         Selenide.open("https://app.testomat.io/users/sign_in");
-        loginUser("ysokolova1988@gmail.com", "6!vFh!4W9bWCRJs");
+        loginPage.isLoaded()
+                .fillEmail("ysokolova1988@gmail.com")
+                .fillPassword("6!vFh!4W9bWCRJs")
+                .submitLogin();
 
+        var targetProjectTitle = faker.commerce().department();
+        new ProjectsPage()
+                .isLoaded()
+                .clickOnNewProjectButton()
+                .fillProjectTitle(targetProjectTitle)
+                .submitProjectCreation();
+//
         preloaderIsHidden();
+
+        String targetTestSuite = faker.commerce().productName();
+
+        new TestSuitePage()
+                .isLoaded()
+                .closeReadmeModal()
+                .fillFirstTestSuiteName(targetTestSuite);
+
+
+
+        $("[placeholder='First Suite']").shouldBe(Condition.visible);
         $("#content-desktop h2").shouldBe(Condition.visible);
         $("#content-desktop [href='/projects/new']").click();
 
@@ -54,6 +78,6 @@ public class CreateTestSuiteRawTest {
     }
 
     private static void preloaderIsHidden() {
-        $("app-loader").shouldBe(Condition.disappear,Duration.ofSeconds(30));
+        $("app-loader").shouldBe(Condition.disappear, Duration.ofSeconds(30));
     }
 }
