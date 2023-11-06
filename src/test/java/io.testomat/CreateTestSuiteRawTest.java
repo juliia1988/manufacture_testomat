@@ -1,21 +1,19 @@
 package io.testomat;
 
+import asserts.TestSuitesPageAsserts;
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.github.javafaker.Faker;
 import io.testomat.web.pages.LoginPage;
 import io.testomat.web.pages.ProjectsPage;
-import io.testomat.web.pages.TestSuitePage;
+import io.testomat.web.pages.TestSuitesPage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.CollectionCondition.size;
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
-import static org.junit.jupiter.api.Assertions.fail;
 
 public class CreateTestSuiteRawTest {
 
@@ -23,10 +21,14 @@ public class CreateTestSuiteRawTest {
 
     private final LoginPage loginPage = new LoginPage();
 
+    static {
+        Configuration.baseUrl = "https://uat.testomat.io";
+    }
+
     @Test
     @DisplayName("Should be possible test suite for new project")
     void shouldBePossibleToCreateNewProject() {
-        Selenide.open("https://app.testomat.io/users/sign_in");
+        Selenide.open("/users/sign_in");
         loginPage.isLoaded()
                 .fillEmail("ysokolova1988@gmail.com")
                 .fillPassword("6!vFh!4W9bWCRJs")
@@ -38,46 +40,28 @@ public class CreateTestSuiteRawTest {
                 .clickOnNewProjectButton()
                 .fillProjectTitle(targetProjectTitle)
                 .submitProjectCreation();
-//
+
         preloaderIsHidden();
 
         String targetTestSuite = faker.commerce().productName();
 
-        new TestSuitePage()
+        new TestSuitesPage()
                 .isLoaded()
                 .closeReadmeModal()
-                .fillFirstTestSuiteName(targetTestSuite);
+                .fillFirstTestSuite(targetTestSuite);
 
+//                .asserts();
+//                .listShouldHaveSize(1)
+//                .firstTestSuiteInListShouldHaveText(targetTestSuite);
 
-
-        $("[placeholder='First Suite']").shouldBe(Condition.visible);
-        $("#content-desktop h2").shouldBe(Condition.visible);
-        $("#content-desktop [href='/projects/new']").click();
-
-        preloaderIsHidden();
-        $("#project-form #project_title").setValue(faker.commerce().productName());
-        $("[name='commit']").click();
-
-        preloaderIsHidden();
-        $("[placeholder='First Suite']").shouldBe(Condition.visible);
-        $(".back").click();
-        String targetTestSuite = faker.commerce().productName();
-        $("[placeholder='First Suite']")
-                .setValue(targetTestSuite)
-                .pressEnter();
-
-        $$(".list-group-wrapper .dragSortItem").shouldHave(size(1));
-        $(".list-group-wrapper .dragSortList").shouldHave(text(targetTestSuite));
-
+        //just for example
+        new TestSuitesPageAsserts()
+                .listShouldHaveSize(1)
+                .firstTestSuiteInListShouldHaveText(targetTestSuite);
     }
 
-    private static void loginUser(String mail, String password) {
-        $("#content-desktop #user_email").setValue(mail);
-        $("#content-desktop #user_password").setValue(password);
-        $("#content-desktop [name='commit']").click();
-    }
-
-    private static void preloaderIsHidden() {
-        $("app-loader").shouldBe(Condition.disappear, Duration.ofSeconds(30));
+    private void preloaderIsHidden() {
+        $("#app-loader").shouldBe(Condition.disappear, Duration.ofSeconds(30));
     }
 }
+
