@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4ecc5592-55f2-4cfb-9ff9-094fad727e30" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/testomat/web/pages/TestSuitePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/testomat/web/pages/TestSuitesPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/testomat/web/pages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/testomat/web/pages/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/testomat/web/pages/TestSuitesPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/testomat/web/pages/TestSuitesPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/io.testomat/CreateTestSuiteRawTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/io.testomat/CreateTestSuiteRawTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,16 +55,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "editing.templates"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="io.testomat.web.pages" />
@@ -72,7 +74,7 @@
       <recent name="$PROJECT_DIR$/src/test/java" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.CreateTestSuiteRawTest.shouldBePossibleToCreateNewProject">
+  <component name="RunManager" selected="Gradle.CreateTestSuiteRawTest">
     <configuration name="CreateTestSuitePOTest" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -119,6 +121,29 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="CreateTestSuiteRawTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;io.testomat.CreateTestSuiteRawTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="CreateTestSuiteRawTest.shouldBePossibleToCreateNewProject" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -144,6 +169,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.CreateTestSuiteRawTest" />
         <item itemvalue="Gradle.CreateTestSuiteRawTest.shouldBePossibleToCreateNewProject" />
         <item itemvalue="Gradle.CreateTestSuitePOTest.shouldBePossibleToCreateNewProject" />
       </list>

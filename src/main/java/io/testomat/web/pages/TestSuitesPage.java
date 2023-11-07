@@ -33,10 +33,6 @@ public class TestSuitesPage extends BasePage {
         return null;
     }
 
-    public TestSuitesPage asserts() {
-        return new TestSuitesPageAsserts();
-    }
-
     //just for exapmle
     public TestSuitesPage fillSecondTestSuiteName(String targetTestSuite) {
         $(String.format(firstTestSuiteSelector, "First Suite")).setValue(targetTestSuite);

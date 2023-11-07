@@ -29,10 +29,9 @@ public class CreateTestSuiteRawTest {
     @DisplayName("Should be possible test suite for new project")
     void shouldBePossibleToCreateNewProject() {
         Selenide.open("/users/sign_in");
-        loginPage.isLoaded()
-                .fillEmail("ysokolova1988@gmail.com")
-                .fillPassword("6!vFh!4W9bWCRJs")
-                .submitLogin();
+        loginPage
+                .isLoaded()
+                .loginUser(LoginPage.Creds.mail, LoginPage.Creds.password);
 
         var targetProjectTitle = faker.commerce().department();
         new ProjectsPage()
@@ -50,11 +49,6 @@ public class CreateTestSuiteRawTest {
                 .closeReadmeModal()
                 .fillFirstTestSuite(targetTestSuite);
 
-//                .asserts();
-//                .listShouldHaveSize(1)
-//                .firstTestSuiteInListShouldHaveText(targetTestSuite);
-
-        //just for example
         new TestSuitesPageAsserts()
                 .listShouldHaveSize(1)
                 .firstTestSuiteInListShouldHaveText(targetTestSuite);

@@ -13,7 +13,7 @@ public class LoginPage extends BasePage{
         return this;
     }
 
-    private void loginUser(String mail, String password) {
+    public void loginUser(String mail, String password) {
         fillEmail(mail);
         fillPassword(password);
         submitLogin();
@@ -32,6 +32,11 @@ public class LoginPage extends BasePage{
     public LoginPage fillEmail(String mail) {
         findElement(" #user_email").setValue(mail);
         return this;
+    }
+
+    public static class Creds{
+        public static String mail = "ysokolova1988@gmail.com";
+        public static String password = "6!vFh!4W9bWCRJs";
     }
 
     public void preloaderIsHidden(){
