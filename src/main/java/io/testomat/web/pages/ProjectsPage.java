@@ -23,7 +23,7 @@ public class ProjectsPage extends BasePage {
     }
 
     public ProjectsPage submitProjectCreation() {
-        $("[name='commit']").click();
+        $("[name='commit']").as("Submit button").click();
         return this;
     }
 

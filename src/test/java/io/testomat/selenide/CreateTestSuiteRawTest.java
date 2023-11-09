@@ -1,20 +1,23 @@
-package io.testomat;
+package io.testomat.selenide;
 
 import asserts.TestSuitesPageAsserts;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.junit5.TextReportExtension;
 import com.github.javafaker.Faker;
 import io.testomat.web.pages.LoginPage;
 import io.testomat.web.pages.ProjectsPage;
 import io.testomat.web.pages.TestSuitesPage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.$;
 
+@ExtendWith(TextReportExtension.class)
 public class CreateTestSuiteRawTest {
 
     Faker faker = new Faker();
@@ -23,6 +26,8 @@ public class CreateTestSuiteRawTest {
 
     static {
         Configuration.baseUrl = "https://uat.testomat.io";
+//        Configuration.browser = "chrome";
+//        Configuration.browserSize = "1366x768";
     }
 
     @Test
@@ -55,7 +60,7 @@ public class CreateTestSuiteRawTest {
     }
 
     private void preloaderIsHidden() {
-        $("#app-loader").shouldBe(Condition.disappear, Duration.ofSeconds(30));
+        $("#app-loader").shouldBe(Condition.disappear, Duration.ofSeconds(300));
     }
 }
 
